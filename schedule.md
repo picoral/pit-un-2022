@@ -1,4 +1,4 @@
-# Schedule of planned activities
+# Schedule
 
 * Week 1: training: data wrangling with prison initiative data
 * Week 2: training: data modeling with COMPAS data
