@@ -23,6 +23,7 @@ Topics:
 * Git and GitHub
 * Markdown (for learning diary)
 * Python and R installation
+* How to ask for help
 
 **Learning diary entry**
 
