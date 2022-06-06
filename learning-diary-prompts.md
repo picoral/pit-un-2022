@@ -1,5 +1,7 @@
 # Learning Diary Prompts
 
+A [learning diary](https://humak.libguides.com/c.php?g=686372&p=4910489) is a tool for reflection on what is heard, discussed, read or experience. It involves reflecting, asking questions, and finding answers. A learning diary is not a paper or a summary of the topics and contents of lectures. The goal is for you to describe your own experience, and how that experience supports your personal growth. In other words, this is a tool for your self-direction and assessment. The purpose is for you to reflect on how and what you have learned, and writing in your diary also serves as a way to clarify concepts, raise issues, and develop theories.
+
 ## Week 1
 
 **Beginning of the week**
