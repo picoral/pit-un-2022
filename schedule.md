@@ -33,7 +33,7 @@ Topics:
 * Reading data in Python and R
 * Wrangling data -- filtering, mutating, pivoting
 
-Task:
+Tasks:
 
 * Read in a different sheet from the excel file
 * Play around with the data to report results (share on your GitHub repo) -- we encourage you to work with your fellow interns on this
