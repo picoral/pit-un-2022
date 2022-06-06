@@ -38,6 +38,7 @@ Task:
 * Read in a different sheet from the excel file
 * Play around with the data to report results (share on your GitHub repo) -- we encourage you to work with your fellow interns on this
 * Fill out [pre-survey](https://uarizona.co1.qualtrics.com/jfe/form/SV_elhIacPHXWbKFds)
+* Create learning diary entries
 
 ## Week 2
 
