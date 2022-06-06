@@ -25,11 +25,6 @@ Topics:
 * Python and R installation
 * How to ask for help
 
-**Learning diary entry**
-
-* What are you expecting from this experience?
-* What would you like to learn (more) about?
-
 Tuesday: 2pm to 4pm
 
 Topics:
@@ -42,12 +37,7 @@ Task:
 
 * Read in a different sheet from the excel file
 * Play around with the data to report results (share on your GitHub repo) -- we encourage you to work with your fellow interns on this
-
-**Learning diary entry**
-
-* What were the topics of the session?
-* What did you learn? What was new / what was complementary or overlapping with your previous studies? Was there something that changed your views, and why?
-* What amazed, inspired or confused you? What did you not understand or what left you puzzled?
+* Fill out [pre-survey](https://uarizona.co1.qualtrics.com/jfe/form/SV_elhIacPHXWbKFds)
 
 ## Week 2
 
@@ -55,10 +45,3 @@ Reference materials (these will help contextualize the data modeling we will be 
 
 * [Citations Needed Podcast, Episode 162: How the "Data-Driven" Label Sanitizes Cruel Austerity Politics](https://citationsneeded.libsyn.com/episode-162-how-the-data-driven-label-sanitizes-cruel-austerity-politics)
 * [ProPublica's How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
-
-**Learning diary entry**
-
-* What was the main thing you learned? What do you think was most significant? Why?
-* Did your perception of things change so far? How?
-* What did you not really understand? Why?
-* How can you make use of the information and opinions you receive?
