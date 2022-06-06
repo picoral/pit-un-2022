@@ -1,0 +1,368 @@
+---
+title: "Tidying data up"
+output: html_document
+bibliography: [book.bib]
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+opts_chunk$set(echo = TRUE)
+```
+
+# Tidy Data
+
+As mentioned in other documents in this module, tidy data follows three rules:
+
+- Each variable must have its own column.
+- Each observation must have its own row.
+- Each value must have its own cell.
+
+R likes vectorized data, and having one column (i.e., a vector) per variable in your data makes data manipulation much easier. Also, as with your coding and documentation, choosing one consistent way of doing things (and sticking to it) helps to make your data analysis more robust. Choosing one way to represent data fits into this pattern of making everything consistent.
+
+We will be using a famous and widely used data set (i.e., gapminder) to demonstrate how easy working with tidy data can be with `tidyverse`.
+
+```{r eval=FALSE}
+# load libraries
+library(tidyverse)
+library(gapminder)
+
+# inspect gaminder data
+head(gapminder)
+```
+
+```{r echo=FALSE}
+library(gapminder)
+head(gapminder) %>%
+  kable()
+```
+
+We can create new variables (i.e., columns) based on our existing variables by calling each variable by its name. For example, let's calculate Gross domestic product (GDP) based on population (i.e., `pop`) and GDP per capita (i.e., `gdpPercap`).
+
+
+```{r}
+# create total_gdp using mutate() based on gdpPercap and pop
+gapminder_with_gdp <- gapminder %>%
+  mutate(total_gdp = gdpPercap * pop)
+
+# inspect data
+gapminder_with_gdp %>%
+  head()
+```
+
+We can easily computer the number of observations for each country in our data to find out how many years of data we have collected for each country.
+
+```{r eval=FALSE}
+# county how many observations (i.e., rows) per country
+gapminder %>%
+  count(country)
+```
+
+```{r echo=FALSE}
+# county how many observations (i.e., rows) per country
+gapminder %>%
+  count(country) %>%
+  head() %>%
+  kable()
+```
+
+Also, we can visualize changes over time for a specific country.
+
+```{r fig.dim=c(5,5), fig.align='center'}
+# start with data and then
+# filter to keep only United States data
+# start a plot with x mapped to year and y mapped to life expectancy
+# add a line geometrics
+gapminder %>%
+  filter(country == "United States") %>%
+  ggplot(aes(x = year,
+             y = lifeExp)) +
+  geom_line()
+```
+
+# Messy datasets
+
+@wickham2014tidy lists the following most common problems found in messy datasets:
+
+- Column headers are values, not variable names.
+- Multiple variables are stored in one column.
+- Variables are stored in both rows and columns.
+- Multiple types of observational units are stored in the same table.
+- A single observational unit is stored in multiple tables.
+
+Each of the above will be illustrated with real data in the next sections, alongside with a solution on how to tidy the dataset. You can [download all data sets used in this document](https://d2l.arizona.edu/d2l/common/viewFile.d2lfile/Content/L2NvbnRlbnQvZW5mb3JjZWQvOTk4MDgwLTk5NS0yMjExLTFJU1RBMzIwMTAxMjAxL2RhdGFfZm9yX3dyYW5nbGluZy56aXA/data_for_wrangling.zip?ou=998080).
+
+## Column headers are values, not variable names.
+
+Here's the first 10 rows of data from [Tucson's Neighborhood Population Statistics](https://gisdata.tucsonaz.gov/datasets/neighborhood-population-statistics/data).
+
+```{r echo=FALSE, message=FALSE}
+# read data in
+tucson_population_by_neighborhood <- read_csv("data/tucson_population_by_neighborhood.csv")
+
+# print out first 10 rows
+tucson_population_by_neighborhood %>%
+  head(10) %>%
+  kable()
+```
+
+The three variables in this data are: neighborhood name, year, and population. However, most column headers are values for the `year variable` instead of actual variable name.
+
+We fix this problem by pivoting (or turning) the table so that it's a longer table (with only 3 columns, one for each variable).
+
+```{r}
+# create new pivoted (longer) data frame starting with original data and then
+# pivoting all columns except neighborhood (-neighborhood) with column names
+# set to "year" and values set to a column named "population"
+tucson_pop_longer <- tucson_population_by_neighborhood %>%
+  pivot_longer(cols = -neighborhood,
+               names_to = "year",
+               values_to = "population")
+
+# inspect data
+tucson_pop_longer %>%
+  head(15)
+```
+
+## Multiple variables are stored in one column.
+
+Here's the first 10 rows of data from [Tucson's Neighborhood Race Demographics](https://gisdata.tucsonaz.gov/datasets/neighborhood-race-demographics/data), which has the same problem as the previous data set (i.e., column headers are values, not variable names).
+
+```{r echo=FALSE, message=FALSE}
+# read data in
+tucson_race_demographics <- read_csv("data/tucson_race_demographics.csv")
+
+# print out first 10 rows
+tucson_race_demographics[, c(1,24:30)] %>%
+  head(10) %>%
+  kable()
+```
+
+We fix the first problem (i.e., column headers are values, not variable names) with `pivot_longer` (like in the previous section).
+
+```{r}
+# create new pivoted (longer) data frame starting with original data and then
+# pivoting all columns except neighborhood (-neighborhood) with column names
+# set to "year" and values set to a column named "population"
+tucson_race_longer <- tucson_race_demographics %>%
+  pivot_longer(cols = -neighborhood,
+               names_to = "rec_year",
+               values_to = "population")
+
+# inspect data
+tucson_race_longer %>%
+  head(15)
+```
+
+Now we turn to the second problem (i.e., multiple variables are stored in one column.). The `rec_year` column contains information about racial-ethnic-cultural (REC) identity of the population and the year the data was collected. We fix that problem using the `separate()` function.
+
+```{r}
+# overwrite tucson_race_longer data frame starting with tucson_race_longer and then
+# separate the rec_year into the two variable columns rec and year
+tucson_race_longer <- tucson_race_longer %>%
+  separate(col = rec_year, into = c("rec", "year"))
+
+# inspect data
+tucson_race_longer %>%
+  head(15)
+```
+
+## Variables are stored in both rows and columns
+
+The table below shows the most complicated form of messy data (from [https://www.meteoblue.com/en/weather/archive/export/tucson_united-states-of-america_5318313](https://www.meteoblue.com/en/weather/archive/export/tucson_united-states-of-america_5318313)), with variables stored in both rows and columns.
+
+```{r echo=FALSE, message=FALSE}
+# read data in
+tucson_seven_day_temps <- read_csv("data/tucson_weather_summary.csv")
+
+# print out first 10 rows
+tucson_seven_day_temps %>%
+  kable()
+```
+
+This data has month and year as variables (i.e., columns) and day as column names. Temperatures are values under each day (from January 20 2021 to January 27 2021). In addition, information about whether each value is a maximum or minimum temperature is store in a column called `temp_type`. Our actually variables for this are: location, date (divided into day, month, and year), minimum temperature, and maximum temperature.
+
+First step is to `pivot_longer` to have day as a variable (i.e., one column).
+
+```{r}
+# overwrite tucson_race_longer data frame starting with tucson_race_longer and then
+# pivot all columns that start with "2", set column name to "day"
+tucson_seven_day_temps_longer <- tucson_seven_day_temps %>%
+  pivot_longer(cols = starts_with("2"),
+               names_to = "day")
+
+# inspect data
+tucson_seven_day_temps_longer 
+```
+
+Then we `pivot_wider` to have two separate columns for our two numeric variables, i.e. minimum and maximum temperatures.
+
+
+```{r}
+# overwrite tucson_race_longer data frame starting with tucson_race_longer and then
+# pivot temp_type into two columsn that take the values in the "value" column
+tucson_seven_day_temps_wider <- tucson_seven_day_temps_longer %>%
+  pivot_wider(names_from = temp_type,
+              values_from = value)
+
+# inspect data
+tucson_seven_day_temps_wider 
+```
+
+Final touch is to create a `date` column that is an actual date data type.
+
+```{r}
+# create a new clean_tucson_seven_day_temps data frame with the results of
+# mutation of new variable based on a paste of day, month, and year in our data
+clean_tucson_seven_day_temps <- tucson_seven_day_temps_wider %>%
+  mutate(date = parse_date(paste(month, day, year), "%B %d %Y"))
+
+# inspect data
+clean_tucson_seven_day_temps 
+```
+
+## Multiple types of observational units are stored in the same table
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+# read data in
+rap_artist_rankings <- read_csv("data/rap_artist_ranking.csv")
+```
+
+The idea here is that different types of observational units should be, in principle, stored in different data frames. The process of separating data that belongs to different observations onto different tables is related to the idea of database normalization [@wickham2014tidy]. Normalization is just good practice, and it helps the data analyst understand the data better (and remove any inconsistencies). With that said, we often denormalize (i.e., merge tables with different types of observations) into one table for data analysis in R.
+
+For example, the data below on rap artists's song ratings across different years (from (Tidy Tuesday)[https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-14/readme.md]) includes observations on what position a rap song ranked in each year. But it also includes the name and gender of artist (which would belong to a separate table with artist demographics as the type of observations), which is then repeated many times because each artist shows up multiple times in the data. There is also information about the critic, their name, their role and country (which technically should be in a separate table).
+
+```{r echo=FALSE}
+rap_artist_rankings %>%
+  arrange(artist) %>%
+  head(20) %>%
+  arrange(critic_name) %>%
+  head(10) %>%
+  kable()
+```
+
+First we create a separate table for artists' demographics.
+
+```{r}
+# create new artist_gender data frame with results of
+# start with original data and then
+# pull distinct combinations of artist and gender
+artist_gender <- rap_artist_rankings %>%
+  distinct(artist, gender)
+
+# inspect data
+artist_gender %>%
+  head(10)
+```
+
+Then create a separate table for song artist pairing information.
+
+```{r}
+# create new artist_gender data frame with results of
+# start with original data and then
+# pull distinct combinations of artist and gender
+song_artist <- rap_artist_rankings %>%
+  distinct(title, artist)
+
+# create unique ID for song artist combination
+# there is one repeated title
+song_artist <- song_artist %>%
+  mutate(song_id = c(1:nrow(song_artist)))
+
+# inspect data
+song_artist %>%
+  head(10)
+```
+
+Let's ensure that song ID (variable just created for unique song title + artist combination) in added to the original data frame.
+
+```{r}
+# add song ID to the original data frame
+rap_artist_rankings <- left_join(rap_artist_rankings,
+                                 song_artist)
+```
+
+We also need to create a separate table with critic information.
+
+```{r}
+# create new critic_info data frame with results of
+# start with original data and then
+# pull distinct combinations of artist and gender
+critic_info <- rap_artist_rankings %>%
+  distinct(critic_name, critic_rols, critic_country, critic_country2)
+
+# inspect data
+critic_info %>%
+  head(10)
+```
+
+Finally, we create a new data frame that keeps only variables that are directly related the ranking of rap artists. First we add song ID to the original data frame. Each song has a rank every year, given by a critic (we can keep `critic_name` as a unique key for critic because there are no repeated critic names).
+
+```{r}
+# create new data frame (rap_artist_ranking_clean) with info related to song ranking only
+rap_artist_ranking_clean <- rap_artist_rankings %>%
+  select(song_id, rank, year, critic_name)
+
+# inspect data
+rap_artist_ranking_clean %>%
+  head()
+```
+
+## A single observational unit is stored in multiple tables
+
+While having multiple types of observational units are stored in the same table (previous section) is not an issue for most data analysis in R, having a single observational unit store in multiple tables can hinder analysis. That usually happens when your data is split into different files, and the file name indicates some important information about the data, such as year. 
+
+Below is an example of that, with [US baby names data from Kaggle](https://www.kaggle.com/zerryberry/us-baby-names). This is just a demonstration with two files. In a real analysis, you would need a function and a for loop to load all files. But let's load two files, making sure the variable `year` is added through a `mutate()` so we don't lose that information once we combine the data.
+
+```{r}
+# read data in
+# year 2010
+us_baby_names_2010 <- read_csv("data/us_baby_names/yob2010.txt",
+                               col_names = FALSE,
+                               col_types = list(col_character(), 
+                                                col_character(),
+                                                col_double())) %>%
+  dplyr::rename(name = X1,
+         gender = X2,
+         count = X3) %>%
+  mutate(year = 2010)
+
+# year 2009
+us_baby_names_2009 <- read_csv("data/us_baby_names/yob2009.txt",
+                               col_names = FALSE,
+                               col_types = list(col_character(), 
+                                                col_character(),
+                                                col_double())) %>%
+  dplyr::rename(name = X1,
+         gender = X2,
+         count = X3) %>%
+  mutate(year = 2009)
+
+# inspect data
+us_baby_names_2010 %>%
+  head()
+
+us_baby_names_2009 %>%
+  head()
+```
+
+Once we have all the individual data files, we can combine them using the `bind_rows()` function.
+
+```{r}
+# combine all data into one
+us_baby_names <- bind_rows(us_baby_names_2009,
+                           us_baby_names_2010)
+
+# inspect data
+us_baby_names %>%
+  arrange(-count) %>%
+  head(10)
+```
+
+
+# Extra Resource
+
+- [R for Data Science, Chapter 12 Tidy data](https://r4ds.had.co.nz/tidy-data.html)
+
+# Reference
