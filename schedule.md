@@ -1,5 +1,7 @@
 # Schedule
 
+[Zoom link](https://arizona.zoom.us/my/picoral)
+
 * Week 1: training: data wrangling with prison initiative data
 * Week 2: training: data modeling with COMPAS data
 * Week 3: training: data visualization with Google mobility data
@@ -45,7 +47,7 @@ Reference materials (these will help contextualize the data modeling we will be 
 * [Citations Needed Podcast, Episode 162: How the "Data-Driven" Label Sanitizes Cruel Austerity Politics](https://citationsneeded.libsyn.com/episode-162-how-the-data-driven-label-sanitizes-cruel-austerity-politics)
 * [ProPublica's How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
 
-[Zoom link](https://arizona.zoom.us/my/picoral)
+
 
 Monday: 9am to 11am
 
