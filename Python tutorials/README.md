@@ -1,5 +1,7 @@
-[Prison Initiative]()
+[Set up Python environment (if needed)](https://github.com/picoral/pit-un-2022/tree/master/python_setup)
 
-[COMPAS](http://htmlpreview.github.io/?https://github.com/picoral/pit-un-2022/blob/master/R%20tutorials/compas-case-study.html)
+[Prison Initiative](data-wrangling-w-python.ipynb)
 
-[Google Mobility](http://htmlpreview.github.io/?https://github.com/picoral/pit-un-2022/blob/master/R%20tutorials/google-mobility.html)
+COMPAS
+
+Google Mobility
