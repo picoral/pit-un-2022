@@ -2,6 +2,6 @@
 
 [Prison Initiative](data-wrangling-w-python.ipynb)
 
-COMPAS
+[COMPAS](modeling/compas_modeling.ipynb)
 
 Google Mobility
