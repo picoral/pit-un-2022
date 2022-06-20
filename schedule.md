@@ -48,7 +48,6 @@ Reference materials (these will help contextualize the data modeling we will be 
 * [ProPublica's How We Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
 
 
-
 Monday: 9am to 11am
 
 Topics:
@@ -57,3 +56,9 @@ Topics:
 * Share repo links with Adriana
 * Modeling -- what is it? 
 * Demonstration in R
+
+# Week 3
+
+During this week you will be working with [mobility data from Google](https://www.google.com/covid19/mobility/) and [from Facebook](https://dataforgood.facebook.com/dfg/covid-19) to answer the following question:
+
+> How has COVID-19 impacted people over the past 2.5 years?
