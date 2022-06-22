@@ -1,5 +1,8 @@
 name: pit-un_env
 channels:
+  - plotly
+  - anaconda
+  - conda-forge
   - defaults
 dependencies:
   - blas=1.0=mkl
