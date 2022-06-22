@@ -1,0 +1,58 @@
+,code,state,category
+0,AL,Alabama,state
+1,AK,Alaska,state
+2,AZ,Arizona,state
+3,AR,Arkansas,state
+4,CA, California, state
+5,CO,Colorado,state
+6,CT,Connecticut,state
+7,DE,Delaware,state
+8,FL,Florida,state
+9,GA,Georgia,state
+10,HI,Hawaii,state
+11,ID,Idaho,state
+12,IL,Illinois,state
+13,IN,Indiana,state
+14,IA,Iowa,state
+15,KS,Kansas,state
+16,KY,Kentucky,state
+17,LA,Louisiana,state
+18,ME,Maine,state
+19,MD,Maryland,state
+20,MA,Massachusetts,state
+21,MI,Michigan,state
+22,MN,Minnesota,state
+23,MS,Mississippi,state
+24,MO,Missouri,state
+25,MT,Montana,state
+26,NE,Nebraska,state
+27,NV,Nevada,state
+28,NH,New Hampshire,state
+29,NJ,New Jersey,state
+30,NM,New Mexico,state
+31,NY,New York,state
+32,NC,North Carolina,state
+33,ND,North Dakota,state
+34,OH,Ohio,state
+35,OK,Oklahoma,state
+36,OR,Oregon,state
+37,PA,Pennsylvania,state
+38,RI,Rhode Island,state
+39,SC,South Carolina,state
+40,SD,South Dakota,state
+41,TN,Tennessee,state
+42,TX,Texas,state
+43,UT,Utah,state
+44,VT,Vermont,state
+45,VA,Virginia,state
+46,WA,Washington,state
+47,WV,West Virginia,state
+48,WI,Wisconsin,state
+49,WY,Wyoming,state
+50,DC,District of Columbia,district
+51,AS,American Samoa,outlying territory
+52,GU,Guam,outlying territory
+53,MP,Northern Mariana Islands,outlying territory
+54,PR,Puerto Rico,outlying territory
+55,UM,United States Minor Outlying Islands,outlying territory
+56,VI,Virgin Islands US,outlying territory

@@ -4,4 +4,4 @@
 
 [COMPAS](modeling/compas_modeling.ipynb)
 
-Google Mobility
+[Google Mobility](google-mobility/google_mobility_COVID19.ipynb)
