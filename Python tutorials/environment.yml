@@ -1,0 +1,27 @@
+name: base
+channels:
+  - defaults
+dependencies:
+  - conda
+  - python=3.8
+  - python.app
+  - conda-env
+  - conda-verify
+  - _ipyw_jlab_nb_ext_conf
+  - anaconda
+  - anaconda-navigator
+  - navigator-updater
+  - spacy
+  - murmurhash
+  - ijson
+  - torchaudio
+  - pytorch
+  - torchvision
+  - scikit-learn-intelex
+  - tensorflow
+  - datasets
+  - pip
+  - conda-build
+  - geoplot
+  - plotly=5.8.2
+prefix: /Users/sarahstueve/opt/anaconda3
