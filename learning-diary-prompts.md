@@ -44,3 +44,15 @@ These are [Google interview questions](https://grow.google/). No worries if you 
 
 * Ensuring data is free from bias is an essential part of creating valid insights. What are some sources of bias that you should consider when evaluating data sources?
 * To understand why customers are unhappy with service at a grocery store, analysts install hidden microphones at each register to record conversations. They then use information from loyalty cards to email offers to entice people back to the store. Do you see any issues with this?
+
+## Week 3
+
+* What was the main thing you learned? What do you think was most significant? Why?
+* What have you learned from your group mate?
+* What have you changed or incorporated in your coding workflow?
+
+These are [Google interview questions](https://grow.google/). No worries if you don't know the "correct" answer, we will be discussing these in our mentorship meetings.
+
+* What are some of the key features of a data frame?
+* Analysts often work on collaborative, cross-functional teams. What are some steps you might take to share a data cleaning process and summarize the results?
+* When is it useful to connect internal data to external data? For example: What might we find out by connecting soda sales to weather data?
