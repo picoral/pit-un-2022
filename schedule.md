@@ -62,3 +62,19 @@ Topics:
 During this week you will be working with [mobility data from Google](https://www.google.com/covid19/mobility/) and [from Facebook](https://dataforgood.facebook.com/dfg/covid-19) to answer the following question:
 
 > How has COVID-19 impacted people over the past 2.5 years?
+
+## Week 4/5
+
+For the rest of this program, we will be implementing a computer vision solution to a research problem. 
+
+Resources:
+* [calculating the size of objects in images](https://www.uniquesoftwaredev.com/calculating-the-size-of-objects-in-photos-with-computer-vision/)
+
+Practice classification problems:
+* [Classifying blood cell types](https://www.kaggle.com/datasets/paultimothymooney/blood-cells)
+* [Classifying crops](https://www.kaggle.com/datasets/aman2000jaiswal/agriculture-crop-images)
+
+You can find some of the data we will be working on at this [Rock pool water repo](https://github.com/cct-datascience/Rock-Pool-Data). A quick exploratory analysis of the data, not including the original images) will reveal that date and water levels correlate. In that sense, the classification could rely only on date. But we do want to use the images. Here are some questions for reflection:
+
+* How would you approach the problem? What steps are needed to solve this?
+* What are the advantages and disadvantages of each approach?
