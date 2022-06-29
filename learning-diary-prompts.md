@@ -56,3 +56,9 @@ These are [Google interview questions](https://grow.google/). No worries if you 
 * What are some of the key features of a data frame?
 * Analysts often work on collaborative, cross-functional teams. What are some steps you might take to share a data cleaning process and summarize the results?
 * When is it useful to connect internal data to external data? For example: What might we find out by connecting soda sales to weather data?
+
+## Week 4 and 5
+
+* What are the challenges you predict you will face related to the water level pool classification problem you will be working on for the next 4 weeks?
+* What skills do you already have to solve the problem?
+* What skills will you have to learn to solve the problem?
