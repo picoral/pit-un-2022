@@ -79,7 +79,7 @@ You can find some of the data we will be working on at this [Rock pool water rep
 * How would you approach the problem? What steps are needed to solve this?
 * What are the advantages and disadvantages of each approach?
 
-## Week 6 to 8
+## Weeks 6 to 8
 
 * Present solutions for Titanic classifier
 * Two projects:
