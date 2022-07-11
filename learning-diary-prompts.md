@@ -59,6 +59,13 @@ These are [Google interview questions](https://grow.google/). No worries if you 
 
 ## Week 4 and 5
 
-* What are the challenges you predict you will face related to the water level pool classification problem you will be working on for the next 4 weeks?
+* What are the challenges you predict you will face related to the water level pool classification problem you will be working?
 * What skills do you already have to solve the problem?
 * What skills will you have to learn to solve the problem?
+
+## Week 6
+
+* What approaches are you thinking of taking to your specific project (water pool OR bird count)?
+* What strategies are you using for collaborating with your partner?
+
+
